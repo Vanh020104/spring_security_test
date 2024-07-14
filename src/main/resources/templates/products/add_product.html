@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Students</title>
+    <head th:insert="~{fragments/head :: head}"></head>
+</head>
+<body>
+
+<header th:insert="~{fragments/header :: header}"></header>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Add Product</h1>
+    <form style="border: 1px solid #dad8d8;border-radius: 5px; max-width: 500px; padding: 30px; margin: 0 auto;flex-direction: column; align-items: center" th:action="@{/api/products/add}" th:object="${product}" method="post">
+        <div class="form-group">
+            <label for="class_name"> Name</label>
+            <input type="text" th:field="*{name}" class="form-control" id="class_name">
+        </div>
+        <div class="form-group" style="display: flex; justify-content: space-between" >
+            <div >
+                <label for="age">Price</label>
+                <input type="number" th:field="*{price}" class="form-control" id="age">
+            </div>
+            <div>
+                <label for="email">Qty</label>
+                <input type="text" th:field="*{qty}" class="form-control" id="email">
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="description"> Description</label>
+            <input type="text" th:field="*{description}" class="form-control" id="description">
+        </div>
+        <div class="form-group">
+            <label for="image"> Image</label>
+            <input type="text" th:field="*{image}" class="form-control" id="image">
+        </div>
+        <button style="padding: 5px 30px;align-items: center; display: flex; margin: 0 auto" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<footer th:insert="~{fragments/footer :: vanh}"></footer>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Web LỎ</title>
+<!--    <th:block th:include="/include/head"></th:block>-->
+<head th:insert="~{fragments/head :: head}"></head>
+</head>
+<body>
+<header th:insert="~{fragments/header :: header}"></header>
+
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Product</h1>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+        <button style="border: none; float: right;margin-bottom:10px" class="btn btn-primary"><a style="text-decoration: none; color: white; float: right;" href="/api/products/add">+ Create</a> </button>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Qty</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Action</th>
+            <!-- Add more columns as needed -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td><img th:src="${product.image}" alt="Product Image" width="100" height="100"></td>
+            <td th:text="${product.qty}"></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.price}"></td>
+
+            <td>
+                <a th:href="@{/api/products/edit/{id}(id=${product.id})}" class="btn btn-primary btn-sm">Edit</a>
+                <a th:href="@{/api/products/delete/{id}(id=${product.id})}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+            <!-- Add more data as needed -->
+        </tr>
+        </tbody>
+    </table>
+</div>
+<footer th:insert="~{fragments/footer :: vanh}"></footer>
+
+
+
+</body>
+</html>
